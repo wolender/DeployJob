@@ -17,7 +17,7 @@ pipeline {
                       sh 'docker login'
                       sh 'docker pull wolender/release_repo:$VERSION'
                       sh 'docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 -d mysql:8.0'
-                      sh 'docker run -p 80:8080 -e DB_MODE=$DB_MODE -d wolender/release_repo:$VERSION '
+                      sh 'docker run -p 80:8080 -e DB_MODE=$DB_MODE wolender/release_repo:$VERSION '
                 }
                 
             }
