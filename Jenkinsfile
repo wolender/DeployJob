@@ -16,7 +16,7 @@ pipeline {
                       }
                       sh 'docker login'
                       sh 'docker pull wolender/release_repo:$VERSION'
-                      sh 'docker run -p 80:8080 -e ENV_NAME=$NAME -d wolender/release_repo:$VERSION '
+                      sh 'docker run -p 80:8080 -e DB_MODE=$DB_MODE -d wolender/release_repo:$VERSION '
                 }
                 
             }
