@@ -17,7 +17,7 @@ pipeline {
                       }
                       // Start db if not started
                       if (!database_id) {
-                        sh 'docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 -d mysql:8.0'
+                        sh 'docker run --network=my-network -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 -d mysql:8.0'
                       }
                       sh 'docker login'
                       sh 'docker pull wolender/release_repo:$VERSION'
